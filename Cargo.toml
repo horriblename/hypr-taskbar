@@ -1,0 +1,15 @@
+[package]
+name = "hypr-taskbar"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+simple_logger = "4.0.0"
+hyprland = { git = "https://github.com/hyprland-community/hyprland-rs"}
+serde = "1.0.147"
+serde_json = "1.0.88"
+
+freedesktop-icons = "0.2.2"
+freedesktop-desktop-entry = { git = "https://github.com/pop-os/freedesktop-desktop-entry", version = "0.5.0" }
