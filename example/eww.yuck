@@ -1,0 +1,26 @@
+(deflisten listenTasks
+  :initial "[]"
+  `hypr-taskbar`)
+
+(defwidget taskbar [ tasks ]
+  (box :class "taskbar"
+       :space-evenly false
+    (for app in tasks
+      (button :class "task-btn"
+              :onclick 'hyprctl dispatch focuswindow address:${app.address}'
+              :onmiddleclick 'hyprctl dispatch closewindow address:${app.address}'
+              :tooltip { app.title }
+        (image :class 'task-icon'
+               :path { app.icon_path }
+               :image-width 18)))))
+
+(defwindow bar
+  :monitor 0
+  :geometry (geometry :anchor "top center"
+    :width "100%"
+    :height "30px"
+              )
+  :stacking "fg"
+  :exclusive true
+  :windowtype "dock"
+  (taskbar :tasks listenTasks))
